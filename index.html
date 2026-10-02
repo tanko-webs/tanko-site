@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verte Patrie — Yaoundé se lève</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--noir);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,
+        rgba(27,122,62,0.28) 0%, transparent 45%,
+        rgba(206,17,38,0.15) 70%,
+        rgba(252,209,22,0.2) 100%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--jaune); margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 14vw, 11rem);
+      line-height: 0.9; color: var(--blanc);
+      letter-spacing: 3px; margin-bottom: 0.5rem;
+    }
+    .hero h1 .g { color: var(--vert-clair); }
+    .hero h1 .r { color: var(--rouge); }
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: rgba(255,255,255,0.6);
+      max-width: 520px; margin: 1.2rem auto 2.5rem;
+      line-height: 1.65;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.35); font-size: 0.7rem;
+      letter-spacing: 2px; text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint::after { content: ' ↓'; color: var(--jaune); }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── ACTUALITÉS ── */
+    #actualites { background: var(--blanc); }
+
+    .actu-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem; margin-top: 3rem;
+    }
+
+    /* Article principal */
+    .actu-principale {
+      border-radius: 6px; overflow: hidden;
+      border: 1px solid var(--gris-light);
+      display: flex; flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none; color: inherit;
+    }
+    .actu-principale:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+
+    .actu-img-principale {
+      background: var(--vert);
+      height: 240px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .actu-img-principale span { font-size: 3.5rem; }
+
+    .actu-body { padding: 1.8rem; flex: 1; }
+    .actu-meta {
+      display: flex; gap: 0.8rem; align-items: center;
+      margin-bottom: 0.8rem; flex-wrap: wrap;
+    }
+    .actu-categorie {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--vert);
+    }
+    .actu-date { font-size: 0.75rem; color: #aaa; }
+    .actu-titre {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; letter-spacing: 1px;
+      color: var(--noir); line-height: 1.1;
+      margin-bottom: 0.7rem;
+    }
+    .actu-extrait { font-size: 0.9rem; color: var(--gris); line-height: 1.7; }
+
+    /* Liste articles secondaires */
+    .actu-liste { display: flex; flex-direction: column; gap: 1rem; }
+
+    .actu-mini {
+      border-radius: 4px; overflow: hidden;
+      border: 1px solid var(--gris-light);
+      display: flex; gap: 0;
+      text-decoration: none; color: inherit;
+      transition: border-color 0.2s;
+    }
+    .actu-mini:hover { border-color: var(--vert); }
+
+    .actu-mini-img {
+      width: 80px; min-width: 80px;
+      background: var(--gris-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+    }
+    .actu-mini-body { padding: 0.9rem 1rem; }
+    .actu-mini-cat {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--vert); margin-bottom: 0.3rem;
+    }
+    .actu-mini-titre {
+      font-size: 0.88rem; font-weight: 700;
+      color: var(--noir); line-height: 1.4;
+      margin-bottom: 0.3rem;
+    }
+    .actu-mini-date { font-size: 0.72rem; color: #aaa; }
+
+    /* ── APPEL AUX DONS ── */
+    #don-cta { background: var(--jaune); }
+    #don-cta .section-tag { color: var(--noir); border-left-color: var(--rouge); }
+    #don-cta h2 { color: var(--noir); }
+
+    .don-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center; margin-top: 3rem;
+    }
+
+    .don-texte p { color: rgba(0,0,0,0.65); line-height: 1.8; margin-bottom: 1.5rem; }
+
+    .don-amounts { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .don-btn {
+      padding: 0.65rem 1.3rem;
+      border: 2px solid var(--noir);
+      border-radius: 3px;
+      font-weight: 700; font-size: 0.9rem;
+      cursor: pointer; background: transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .don-btn:hover, .don-btn.active { background: var(--noir); color: var(--jaune); }
+
+    .don-box {
+      background: var(--noir);
+      border-radius: 8px; padding: 2.5rem;
+      color: var(--blanc);
+    }
+    .don-box h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; letter-spacing: 1px;
+      color: var(--jaune); margin-bottom: 1.2rem;
+    }
+    .mobile-option {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.9rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 0.7rem;
+    }
+    .mobile-option .op-icon { font-size: 1.6rem; }
+    .mobile-option strong { display: block; font-size: 0.95rem; }
+    .mobile-option small { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
+    .don-box-link {
+      display: block; text-align: center; margin-top: 1.2rem;
+      color: rgba(255,255,255,0.5); font-size: 0.82rem;
+      text-decoration: none;
+    }
+    .don-box-link:hover { color: var(--jaune); }
+
+    /* ── NAVIGATION PAGES ── */
+    #nav-pages { background: var(--noir); padding: 5rem 2rem; }
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .page-card {
+      background: rgba(255,255,255,0.04);
+      border-radius: 4px; padding: 2rem;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: border-color 0.2s, transform 0.15s;
+      display: block;
+    }
+    .page-card:hover { border-color: var(--jaune); transform: translateY(-3px); }
+    .page-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .page-card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; letter-spacing: 1px;
+      color: var(--blanc); margin-bottom: 0.4rem;
+    }
+    .page-card-desc { font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    @media(max-width:768px){
+      .actu-grid { grid-template-columns: 1fr; }
+      .don-layout { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
+  <ul>
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="actions.html">Actions</a></li>
+    <li><a href="membres.html">Membres</a></li>
+    <li><a href="objectifs.html">Objectifs</a></li>
+    <li><a href="dons.html">Dons</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow">Initiative citoyenne · Yaoundé · Cameroun 🇨🇲</div>
+  <h1>
+    <span class="g">Verte</span><br>
+    <span class="r">Patrie</span>
+  </h1>
+  <p class="hero-sub">
+    Personne ne nettoyait nos rigoles, nos routes, nos quartiers.
+    Alors on l'a fait. Parce que Yaoundé, c'est chez nous et nous sommes contre toute formes d'incivisme
+  </p>
+  <div class="hero-cta">
+    <a href="membres.html" class="btn btn-primary">Rejoindre l'équipe</a>
+    <a href="dons.html" class="btn btn-outline">Nous soutenir</a>
+  </div>
+  <div class="scroll-hint">Découvrir</div>
+</header>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Quartiers nettoyés</div></div>
+  <div class="stat"><div class="stat-num">340m</div><div class="stat-label">Rigoles dégagées</div></div>
+  <div class="stat"><div class="stat-num">28</div><div class="stat-label">Volontaires actifs</div></div>
+  <div class="stat"><div class="stat-num">0 F</div><div class="stat-label">Financé par l'État 😄</div></div>
+</div>
+
+<!-- ACTUALITÉS -->
+<section id="actualites">
+  <div class="section-inner">
+    <div class="section-tag">Actualités</div>
+    <h2>Les dernières<br>nouvelles.</h2>
+    <p class="lead">Suivez nos actions, nos annonces et la vie du collectif.</p>
+
+    <div class="actu-grid">
+
+      <!-- Article principal -->
+      <a href="actions.html" class="actu-principale">
+        <div class="actu-img-principale">
+          <span>📸</span>
+          Photo de l'action — à remplacer
+        </div>
+        <div class="actu-body">
+          <div class="actu-meta">
+            <span class="actu-categorie">Action terrain</span>
+            <span class="actu-date">20 mars 2025</span>
+          </div>
+          <div class="actu-titre">Grande journée de nettoyage à Obili — 20 volontaires mobilisés</div>
+          <p class="actu-extrait">
+            Samedi matin, l'équipe Verte Patrie s'est retrouvée dès 7h au quartier Obili pour une opération
+            de grande envergure. En 4 heures, 20 volontaires ont nettoyé un couloir entier saturé de déchets
+            et posé des panneaux de sensibilisation.
+          </p>
+        </div>
+      </a>
+
+      <!-- Articles secondaires -->
+      <div class="actu-liste">
+
+        <a href="objectifs.html" class="actu-mini">
+          <div class="actu-mini-img">🎯</div>
+          <div class="actu-mini-body">
+            <div class="actu-mini-cat">Objectifs</div>
+            <div class="actu-mini-titre">On a atteint 340m de rigoles dégagées — cap sur 1km !</div>
+            <div class="actu-mini-date">15 mars 2025</div>
+          </div>
+        </a>
+
+        <a href="membres.html" class="actu-mini">
+          <div class="actu-mini-img">👥</div>
+          <div class="actu-mini-body">
+            <div class="actu-mini-cat">Équipe</div>
+            <div class="actu-mini-titre">5 nouveaux volontaires rejoignent l'équipe ce mois-ci</div>
+            <div class="actu-mini-date">8 mars 2025</div>
+          </div>
+        </a>
+
+        <a href="actions.html" class="actu-mini">
+          <div class="actu-mini-img">🌊</div>
+          <div class="actu-mini-body">
+            <div class="actu-mini-cat">Prévention</div>
+            <div class="actu-mini-titre">Opération rigoles avant les pluies de juillet — inscrivez-vous</div>
+            <div class="actu-mini-date">1 mars 2025</div>
+          </div>
+        </a>
+
+        <a href="dons.html" class="actu-mini">
+          <div class="actu-mini-img">💛</div>
+          <div class="actu-mini-body">
+            <div class="actu-mini-cat">Don</div>
+            <div class="actu-mini-titre">Merci ! 45 000 FCFA collectés ce trimestre grâce à vos dons</div>
+            <div class="actu-mini-date">28 fév. 2025</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPEL AUX DONS -->
+<section id="don-cta">
+  <div class="section-inner">
+    <div class="section-tag">Nous soutenir</div>
+    <h2>Votre soutien<br>change tout.</h2>
+
+    <div class="don-layout">
+      <div class="don-texte">
+        <p>
+          Verte Patrie fonctionne entièrement grâce aux dons de citoyens comme vous.
+          Aucun salaire, aucun frais caché — 100% de votre contribution finance
+          le matériel et les actions sur le terrain.
+        </p>
+        <p>Choisissez un montant ou donnez ce que vous pouvez :</p>
+        <div class="don-amounts">
+          <button class="don-btn">500 F</button>
+          <button class="don-btn active">1 000 F</button>
+          <button class="don-btn">2 500 F</button>
+          <button class="don-btn">5 000 F</button>
+        </div>
+        <a href="dons.html" class="btn btn-dark">Voir toutes les options de don →</a>
+      </div>
+
+      <div class="don-box">
+        <h3>Donner maintenant</h3>
+        <div class="mobile-option">
+          <span class="op-icon">📱</span>
+          <div>
+            <strong>MTN Mobile Money</strong>
+            <small>+237 6XX XXX XXX · Verte Patrie</small>
+          </div>
+        </div>
+        <div class="mobile-option">
+          <span class="op-icon">🟠</span>
+          <div>
+            <strong>Orange Money</strong>
+            <small>+237 6XX XXX XXX · Verte Patrie</small>
+          </div>
+        </div>
+        <div class="mobile-option">
+          <span class="op-icon">🤝</span>
+          <div>
+            <strong>Don en matériel</strong>
+            <small>Gants, sacs, brouettes — contactez-nous</small>
+          </div>
+        </div>
+        <a href="dons.html" class="don-box-link">Transparence budgétaire →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAVIGATION PAGES -->
+<section id="nav-pages">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--jaune);">Explorer le site</div>
+    <h2 style="color:var(--blanc);">Tout ce qu'il<br>faut savoir.</h2>
+    <div class="pages-grid">
+      <a href="actions.html" class="page-card">
+        <div class="page-card-icon">🧹</div>
+        <div class="page-card-title">Actions</div>
+        <p class="page-card-desc">Toutes nos interventions, avant/après, quartier par quartier.</p>
+      </a>
+      <a href="membres.html" class="page-card">
+        <div class="page-card-icon">👥</div>
+        <div class="page-card-title">Membres</div>
+        <p class="page-card-desc">Rencontrez l'équipe et rejoignez-nous en tant que volontaire.</p>
+      </a>
+      <a href="objectifs.html" class="page-card">
+        <div class="page-card-icon">🎯</div>
+        <div class="page-card-title">Objectifs</div>
+        <p class="page-card-desc">Notre vision pour Yaoundé et les étapes pour y arriver.</p>
+      </a>
+      <a href="dons.html" class="page-card">
+        <div class="page-card-icon">💛</div>
+        <div class="page-card-title">Dons</div>
+        <p class="page-card-desc">Soutenez l'initiative via Mobile Money ou don en matériel.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Verte <span>Patrie</span></div>
+  <div class="footer-flag"><div class="flag-g"></div><div class="flag-r"></div><div class="flag-y"></div></div>
+  <p>Initiative citoyenne bénévole · Yaoundé, Cameroun</p>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="actions.html">Actions</a>
+    <a href="membres.html">Membres</a>
+    <a href="objectifs.html">Objectifs</a>
+    <a href="dons.html">Dons</a>
+  </div>
+  <p style="margin-top:1rem;">© 2026 Verte Patrie — Fait avec fierté 🇨🇲</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.don-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.don-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

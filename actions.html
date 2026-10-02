@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Actions — Verte Patrie</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .action-card {
+      border-radius: 6px; overflow: hidden;
+      border: 1px solid var(--gris-light);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .action-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+
+    .action-photos {
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .photo-box {
+      aspect-ratio: 4/3;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.4rem; font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .photo-box span { font-size: 2rem; }
+    .photo-box.avant { background: #f0d5d5; color: #8b2020; }
+    .photo-box.apres { background: #c8e6d0; color: #1a5c30; }
+
+    .badge {
+      padding: 0.15rem 0.5rem; border-radius: 2px;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 0.2rem;
+    }
+    .badge-avant { background: var(--rouge); color: #fff; }
+    .badge-apres { background: var(--vert); color: #fff; }
+
+    .action-body { padding: 1.5rem; }
+    .action-meta {
+      display: flex; gap: 0.8rem; align-items: center;
+      margin-bottom: 0.8rem; flex-wrap: wrap;
+    }
+    .meta-tag {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--vert);
+    }
+    .meta-date { font-size: 0.75rem; color: #aaa; }
+    .action-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; letter-spacing: 1px;
+      color: var(--noir); margin-bottom: 0.5rem;
+    }
+    .action-desc { font-size: 0.88rem; color: var(--gris); line-height: 1.65; }
+
+    /* TYPES D'INTERVENTION */
+    .types-section { background: var(--noir); }
+    .types-section .section-tag { color: var(--jaune); }
+    .types-section h2 { color: var(--blanc); }
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .type-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px; padding: 2rem;
+      transition: border-color 0.2s;
+    }
+    .type-card:hover { border-color: var(--jaune); }
+    .type-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .type-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; color: var(--blanc);
+      letter-spacing: 1px; margin-bottom: 0.5rem;
+    }
+    .type-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+    @media(max-width:768px){
+      .types-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="actions.html" class="active">Actions</a></li>
+    <li><a href="membres.html">Membres</a></li>
+    <li><a href="objectifs.html">Objectifs</a></li>
+    <li><a href="dons.html">Dons</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-tag">Ce qu'on fait sur le terrain</div>
+  <h1>Nos <span>Actions</span></h1>
+  <p>Chaque intervention documentée — avant et après — pour prouver que le changement est possible.</p>
+</div>
+
+<!-- TYPES D'INTERVENTION -->
+<section class="types-section">
+  <div class="section-inner">
+    <div class="section-tag">Nos fronts</div>
+    <h2>3 types<br>d'intervention.</h2>
+    <div class="types-grid">
+      <div class="type-card">
+        <div class="type-icon">🌊</div>
+        <div class="type-title">Rigoles & Caniveaux</div>
+        <p class="type-desc">Débouchage des caniveaux obstrués avant chaque saison des pluies pour prévenir les inondations dans les quartiers.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">🛣️</div>
+        <div class="type-title">Routes & Artères</div>
+        <p class="type-desc">Nettoyage des bords de route, ramassage de déchets plastiques et déblayage des accès bloqués.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">♻️</div>
+        <div class="type-title">Décharges Sauvages</div>
+        <p class="type-desc">Identification et nettoyage des dépôts sauvages, avec sensibilisation des riverains pour maintenir la propreté.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE ACTIONS -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">Historique</div>
+    <h2>Nos dernières<br>interventions.</h2>
+    <p class="lead">Remplacez ces cartes par vos vraies photos et descriptions de quartiers.</p>
+
+    <div class="actions-grid">
+
+      <div class="action-card">
+        <div class="action-photos">
+          <div class="photo-box avant"><span class="badge badge-avant">Avant</span><span>🚮</span>Rigole bouchée</div>
+          <div class="photo-box apres"><span class="badge badge-apres">Après</span><span>✨</span>Dégagée</div>
+        </div>
+        <div class="action-body">
+          <div class="action-meta">
+            <span class="meta-tag">Rigole</span>
+            <span class="meta-date">15 janvier 2025</span>
+          </div>
+          <div class="action-title">Quartier Bastos</div>
+          <p class="action-desc">Nettoyage complet de 60 mètres de rigoles bouchées. 8 volontaires mobilisés, 12 sacs de déchets collectés.</p>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-photos">
+          <div class="photo-box avant"><span class="badge badge-avant">Avant</span><span>🗑️</span>Décharge sauvage</div>
+          <div class="photo-box apres"><span class="badge badge-apres">Après</span><span>🌿</span>Espace propre</div>
+        </div>
+        <div class="action-body">
+          <div class="action-meta">
+            <span class="meta-tag">Décharge</span>
+            <span class="meta-date">28 janvier 2025</span>
+          </div>
+          <div class="action-title">pont ETOK-kos</div>
+          <p class="action-desc">Élimination d'une décharge sauvage de 200m². Sensibilisation de 30 riverains après l'intervention.</p>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-photos">
+          <div class="photo-box avant"><span class="badge badge-avant">Avant</span><span>🚧</span>Route encombrée</div>
+          <div class="photo-box apres"><span class="badge badge-apres">Après</span><span>🛣️</span>Propre</div>
+        </div>
+        <div class="action-body">
+          <div class="action-meta">
+            <span class="meta-tag">Route</span>
+            <span class="meta-date">10 février 2025</span>
+          </div>
+          <div class="action-title">Quartier Ngoa-Ekele</div>
+          <p class="action-desc">Nettoyage de 150 mètres de bord de route. 15 volontaires dont 5 étudiants de l'université.</p>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-photos">
+          <div class="photo-box avant"><span class="badge badge-avant">Avant</span><span>💧</span>Caniveau bloqué</div>
+          <div class="photo-box apres"><span class="badge badge-apres">Après</span><span>✅</span>Flux rétabli</div>
+        </div>
+        <div class="action-body">
+          <div class="action-meta">
+            <span class="meta-tag">Rigole</span>
+            <span class="meta-date">22 février 2025</span>
+          </div>
+          <div class="action-title">Quartier Biyem-Assi</div>
+          <p class="action-desc">Débouchage de caniveaux avant les grandes pluies de mars. 80 mètres de drainage remis en état.</p>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-photos">
+          <div class="photo-box avant"><span class="badge badge-avant">Avant</span><span>🚮</span>Plastiques partout</div>
+          <div class="photo-box apres"><span class="badge badge-apres">Après</span><span>🌱</span>Nettoyé</div>
+        </div>
+        <div class="action-body">
+          <div class="action-meta">
+            <span class="meta-tag">Route</span>
+            <span class="meta-date">8 mars 2025</span>
+          </div>
+          <div class="action-title">Quartier Mokolo</div>
+          <p class="action-desc">Grande journée citoyenne autour du marché. 20 volontaires, 25 sacs de plastiques ramassés en 3h.</p>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-photos">
+          <div class="photo-box avant"><span class="badge badge-avant">Avant</span><span>🗑️</span>Dépôt sauvage</div>
+          <div class="photo-box apres"><span class="badge badge-apres">Après</span><span>✨</span>Transformé</div>
+        </div>
+        <div class="action-body">
+          <div class="action-meta">
+            <span class="meta-tag">Décharge</span>
+            <span class="meta-date">20 mars 2025</span>
+          </div>
+          <div class="action-title">Quartier Obili</div>
+          <p class="action-desc">Nettoyage d'un couloir saturé de déchets. Pose de panneaux de sensibilisation après l'action.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Verte <span>Patrie</span></div>
+  <div class="footer-flag"><div class="flag-g"></div><div class="flag-r"></div><div class="flag-y"></div></div>
+  <p>Initiative citoyenne bénévole · Yaoundé, Cameroun</p>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="actions.html">Actions</a>
+    <a href="membres.html">Membres</a>
+    <a href="objectifs.html">Objectifs</a>
+    <a href="dons.html">Dons</a>
+  </div>
+  <p style="margin-top:1rem;">© 2026 Verte Patrie — Fait avec fierté 🇨🇲</p>
+</footer>
+
+</body>
+</html>

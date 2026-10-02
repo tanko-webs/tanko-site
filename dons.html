@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dons — Verte Patrie</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* HERO DON */
+    .don-hero {
+      background: var(--jaune);
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+    }
+    .don-hero .page-hero-tag { color: var(--noir); }
+    .don-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--noir); letter-spacing: 2px; line-height: 1;
+    }
+    .don-hero h1 span { color: var(--rouge); }
+    .don-hero p { color: rgba(0,0,0,0.6); max-width: 500px; margin: 1rem auto 0; font-size: 1rem; line-height: 1.7; }
+
+    /* METHODES */
+    #methodes { background: var(--noir); }
+    #methodes .section-tag { color: var(--jaune); }
+    #methodes h2 { color: var(--blanc); }
+
+    .methodes-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .methode-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px; padding: 2.5rem;
+      transition: border-color 0.2s;
+    }
+    .methode-card:hover { border-color: var(--jaune); }
+
+    .methode-header {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .methode-logo {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+    }
+    .mtn-logo { background: #FFC107; }
+    .orange-logo { background: #FF6600; }
+    .materiel-logo { background: var(--vert); }
+
+    .methode-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; letter-spacing: 1px; color: var(--blanc);
+    }
+    .methode-type { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+    .methode-info {
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px; padding: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .info-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+    .info-value { font-size: 0.95rem; font-weight: 700; color: var(--blanc); }
+    .info-value.highlight { color: var(--jaune); font-size: 1.1rem; }
+
+    .methode-note { font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.6; margin-top: 0.5rem; }
+
+    /* MONTANTS SUGGERES */
+    #montants { background: var(--blanc); }
+
+    .montants-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .montant-card {
+      border: 2px solid var(--gris-light);
+      border-radius: 6px; padding: 1.8rem;
+      text-align: center; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .montant-card:hover, .montant-card.popular {
+      border-color: var(--vert); background: rgba(27,122,62,0.05);
+    }
+    .montant-badge {
+      display: inline-block;
+      background: var(--rouge); color: #fff;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 0.15rem 0.5rem; border-radius: 2px;
+      margin-bottom: 0.8rem;
+    }
+    .montant-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem; color: var(--vert); line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .montant-label { font-size: 0.78rem; color: var(--gris); font-weight: 600; letter-spacing: 0.5px; }
+    .montant-impact { font-size: 0.8rem; color: var(--gris); line-height: 1.5; margin-top: 0.8rem; }
+
+    /* TRANSPARENCE */
+    #transparence { background: var(--vert); }
+    #transparence .section-tag { color: var(--jaune); }
+    #transparence h2 { color: var(--blanc); }
+    #transparence .lead { color: rgba(255,255,255,0.75); }
+
+    .depenses-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .depense-item { text-align: center; }
+    .depense-pct {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem; color: var(--jaune); line-height: 1;
+    }
+    .depense-label {
+      font-size: 0.8rem; font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-top: 0.3rem;
+    }
+    .depense-desc { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; line-height: 1.5; }
+
+    @media(max-width:768px){
+      .methodes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="actions.html">Actions</a></li>
+    <li><a href="membres.html">Membres</a></li>
+    <li><a href="objectifs.html">Objectifs</a></li>
+    <li><a href="dons.html" class="active">Dons</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="don-hero">
+  <div class="page-hero-tag">Soutenez l'initiative</div>
+  <h1>Faire un <span>Don</span></h1>
+  <p>Votre contribution finance le matériel et permet à Verte Patrie d'agir plus fort, plus loin.</p>
+</div>
+
+<!-- MÉTHODES DE DON -->
+<section id="methodes">
+  <div class="section-inner">
+    <div class="section-tag">Comment donner</div>
+    <h2>3 façons de<br>nous soutenir.</h2>
+
+    <div class="methodes-grid">
+
+      <!-- MTN -->
+      <div class="methode-card">
+        <div class="methode-header">
+          <div class="methode-logo mtn-logo">
+            <img src="MTN.png" alt="MoMo" width="100">
+          </div>
+          <div>
+            <div class="methode-name">  MTN Mobile Money</div>
+            <div class="methode-type">Paiement mobile</div>
+          </div>
+        </div>
+        <div class="methode-info">
+          <div class="info-row">
+            <span class="info-label">Numéro</span>
+            <span class="info-value highlight">+237 6XX XXX XXX</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Nom du compte</span>
+            <span class="info-value">Verte Patrie</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Référence</span>
+            <span class="info-value">DON-VP-2025</span>
+          </div>
+        </div>
+        <p class="methode-note">⚠️ Remplacez le numéro par votre vrai numéro MTN MoMo. Envoyez-nous un message WhatsApp après votre don pour confirmation.</p>
+      </div>
+
+      <!-- ORANGE -->
+      <div class="methode-card">
+        <div class="methode-header">
+          <div class="methode-logo orange-logo">
+            <img src="ORANGE.png" alt="OM" width="100">
+          </div>
+          <div>
+            <div class="methode-name">Orange Money</div>
+            <div class="methode-type">Paiement mobile</div>
+          </div>
+        </div>
+        <div class="methode-info">
+          <div class="info-row">
+            <span class="info-label">Numéro</span>
+            <span class="info-value highlight">+237 6XX XXX XXX</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Nom du compte</span>
+            <span class="info-value">Verte Patrie</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Référence</span>
+            <span class="info-value">DON-VP-2025</span>
+          </div>
+        </div>
+        <p class="methode-note">⚠️ Remplacez le numéro par votre vrai numéro Orange Money. Envoyez-nous un message WhatsApp après votre don pour confirmation.</p>
+      </div>
+
+      <!-- MATERIEL -->
+      <div class="methode-card">
+        <div class="methode-header">
+          <div class="methode-logo materiel-logo">
+            <img src="DONS.png" alt="DONS" width="100">
+          </div>
+          <div>
+            <div class="methode-name">Don en Matériel</div>
+            <div class="methode-type">Dépôt physique</div>
+          </div>
+        </div>
+        <div class="methode-info">
+          <div class="info-row">
+            <span class="info-label">Besoins actuels</span>
+            <span class="info-value">Gants, sacs, pelles</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Contact</span>
+            <span class="info-value highlight">+237 6XX XXX XXX</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Via</span>
+           <a href=""><span class="info-value">WhatsApp</span></a>
+          </div>
+        </div>
+        <p class="methode-note">Contactez-nous avant tout dépôt pour coordonner le lieu et l'heure de remise. Brouettes, râteaux, sacs poubelle 100L acceptés.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MONTANTS SUGGÉRÉS -->
+<section id="montants">
+  <div class="section-inner">
+    <div class="section-tag">Montants suggérés</div>
+    <h2>Chaque franc<br>compte.</h2>
+    <p class="lead">Pas de minimum, pas de maximum. Ce qui compte c'est votre geste.</p>
+
+    <div class="montants-grid">
+      <div class="montant-card">
+        <div class="montant-num">500</div>
+        <div class="montant-label">FCFA</div>
+        <p class="montant-impact">1 paquet de gants de travail pour un volontaire</p>
+      </div>
+      <div class="montant-card popular">
+        <div class="montant-badge">⭐ Populaire</div>
+        <div class="montant-num">1 000</div>
+        <div class="montant-label">FCFA</div>
+        <p class="montant-impact">5 grands sacs poubelle pour une journée d'action</p>
+      </div>
+      <div class="montant-card">
+        <div class="montant-num">2 500</div>
+        <div class="montant-label">FCFA</div>
+        <p class="montant-impact">Matériel complet pour 1 volontaire (gants + sacs + masque)</p>
+      </div>
+      <div class="montant-card">
+        <div class="montant-num">5 000</div>
+        <div class="montant-label">FCFA</div>
+        <p class="montant-impact">Finance une journée d'action complète dans un quartier</p>
+      </div>
+      <div class="montant-card">
+        <div class="montant-num">10 000</div>
+        <div class="montant-label">FCFA</div>
+        <p class="montant-impact">Sponsor d'une action + votre nom sur nos publications</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPARENCE -->
+<section id="transparence">
+  <div class="section-inner">
+    <div class="section-tag">Transparence</div>
+    <h2>Où va<br>votre argent ?</h2>
+    <p class="lead">Aucun salaire, aucun frais administratif. 100% des dons vont à l'action.</p>
+
+    <div class="depenses-grid">
+      <div class="depense-item">
+        <div class="depense-pct">60%</div>
+        <div class="depense-label">Matériel</div>
+        <p class="depense-desc">Gants, sacs, pelles, brouettes, masques de protection</p>
+      </div>
+      <div class="depense-item">
+        <div class="depense-pct">25%</div>
+        <div class="depense-label">Transport</div>
+        <p class="depense-desc">Déplacements des équipes et évacuation des déchets collectés</p>
+      </div>
+      <div class="depense-item">
+        <div class="depense-pct">15%</div>
+        <div class="depense-label">Sensibilisation</div>
+        <p class="depense-desc">Impression de panneaux, affiches et supports de sensibilisation</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Verte <span>Patrie</span></div>
+  <div class="footer-flag"><div class="flag-g"></div><div class="flag-r"></div><div class="flag-y"></div></div>
+  <p>Initiative citoyenne bénévole · Yaoundé, Cameroun</p>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="actions.html">Actions</a>
+    <a href="membres.html">Membres</a>
+    <a href="objectifs.html">Objectifs</a>
+    <a href="dons.html">Dons</a>
+  </div>
+  <p style="margin-top:1rem;">© 2026 Verte Patrie — Fait avec fierté 🇨🇲</p>
+</footer>
+
+</body>
+</html>

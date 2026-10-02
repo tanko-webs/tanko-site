@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Objectifs — Verte Patrie</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* VISION */
+    #vision { background: var(--noir); }
+    #vision .section-tag { color: var(--jaune); }
+    #vision h2 { color: var(--blanc); }
+    #vision .lead { color: rgba(255,255,255,0.6); }
+
+    .vision-cards {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .vision-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px; padding: 2rem;
+      transition: border-color 0.2s;
+    }
+    .vision-card:hover { border-color: var(--jaune); }
+    .vision-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .vision-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; color: var(--blanc);
+      letter-spacing: 1px; margin-bottom: 0.5rem;
+    }
+    .vision-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+    /* OBJECTIFS CHIFFRES */
+    #chiffres { background: var(--blanc); }
+
+    .obj-list { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
+    .obj-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem; align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--gris-light);
+    }
+    .obj-item:last-child { border-bottom: none; }
+
+    .obj-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem; line-height: 1;
+      color: var(--vert);
+    }
+    .obj-num small {
+      display: block;
+      font-size: 0.9rem; color: var(--gris);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .obj-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; letter-spacing: 1px;
+      color: var(--noir); margin-bottom: 0.4rem;
+    }
+    .obj-desc { font-size: 0.9rem; color: var(--gris); line-height: 1.7; }
+
+    /* PROGRESS BAR */
+    .progress-wrap { margin-top: 0.8rem; }
+    .progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 0.75rem; font-weight: 700; color: var(--gris);
+      margin-bottom: 0.4rem;
+    }
+    .progress-bar {
+      height: 8px; background: var(--gris-light);
+      border-radius: 4px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; background: var(--vert);
+      border-radius: 4px; transition: width 1s ease;
+    }
+
+    /* ROADMAP */
+    #roadmap { background: var(--jaune); }
+    #roadmap .section-tag { color: var(--noir); border-left-color: var(--rouge); }
+    #roadmap h2 { color: var(--noir); }
+
+    .timeline { position: relative; margin-top: 3rem; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--noir);
+      border-radius: 2px;
+    }
+    .tl-item {
+      position: relative; padding: 0 0 2.5rem 2rem;
+    }
+    .tl-dot {
+      position: absolute; left: -2rem; top: 0.3rem;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--noir); border: 3px solid var(--jaune);
+      transform: translateX(-6px);
+    }
+    .tl-dot.done { background: var(--vert); border-color: var(--vert); }
+    .tl-dot.current { background: var(--rouge); border-color: var(--rouge); }
+
+    .tl-date {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(0,0,0,0.5); margin-bottom: 0.3rem;
+    }
+    .tl-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; letter-spacing: 1px;
+      color: var(--noir); margin-bottom: 0.3rem;
+    }
+    .tl-desc { font-size: 0.88rem; color: rgba(0,0,0,0.6); line-height: 1.6; }
+
+    @media(max-width:768px){
+      .vision-cards { grid-template-columns: 1fr; }
+      .obj-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="actions.html">Actions</a></li>
+    <li><a href="membres.html">Membres</a></li>
+    <li><a href="objectifs.html" class="active">Objectifs</a></li>
+    <li><a href="dons.html">Dons</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-tag">Notre vision pour Yaoundé</div>
+  <h1>Nos <span>Objectifs</span></h1>
+  <p>Des ambitions concrètes, des jalons mesurables — pour une ville dont nous serons fiers.</p>
+</div>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="section-inner">
+    <div class="section-tag">La vision</div>
+    <h2>Pourquoi<br>on le fait.</h2>
+    <p class="lead">Nous croyons qu'une ville propre n'est pas un luxe — c'est un droit. Et que les citoyens n'ont pas à attendre l'État pour y arriver.</p>
+    <div class="vision-cards">
+      <div class="vision-card">
+        <div class="vision-icon">🌊</div>
+        <div class="vision-title">Zéro inondation évitable</div>
+        <p class="vision-desc">Des rigoles dégagées avant chaque saison des pluies pour que les quartiers ne soient plus noyés sous l'eau.</p>
+      </div>
+      <div class="vision-card">
+        <div class="vision-icon">🌍</div>
+        <div class="vision-title">Yaoundé Zéro Décharge</div>
+        <p class="vision-desc">Éliminer les dépôts sauvages et créer une culture de propreté durable dans chaque quartier de la ville.</p>
+      </div>
+      <div class="vision-card">
+        <div class="vision-icon">🤝</div>
+        <div class="vision-title">100 Volontaires Actifs</div>
+        <p class="vision-desc">Construire un réseau citoyen assez fort pour couvrir tous les arrondissements de Yaoundé régulièrement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIFS CHIFFRES -->
+<section id="chiffres">
+  <div class="section-inner">
+    <div class="section-tag">Objectifs 2025</div>
+    <h2>Ce qu'on<br>vise cette année.</h2>
+
+    <div class="obj-list">
+
+      <div class="obj-item">
+        <div class="obj-num">50<small>Quartiers</small></div>
+        <div>
+          <div class="obj-title">Couvrir 50 quartiers de Yaoundé</div>
+          <p class="obj-desc">Étendre nos interventions à tous les arrondissements, des quartiers résidentiels aux zones périphériques les plus oubliées.</p>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Progression</span><span>12 / 50</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:24%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-num">100<small>Volontaires</small></div>
+        <div>
+          <div class="obj-title">Recruter 100 volontaires actifs</div>
+          <p class="obj-desc">Bâtir une communauté solide de citoyens engagés, formés et disponibles pour des actions régulières dans leurs quartiers.</p>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Progression</span><span>28 / 100</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:28%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-num">1km<small>De rigoles</small></div>
+        <div>
+          <div class="obj-title">Dégager 1 kilomètre de rigoles</div>
+          <p class="obj-desc">Notre cible pour la saison des pluies 2025 : 1 000 mètres de caniveaux propres pour protéger les maisons des inondations.</p>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Progression</span><span>340m / 1000m</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:34%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="obj-item">
+        <div class="obj-num">5<small>Partenaires</small></div>
+        <div>
+          <div class="obj-title">5 partenaires financiers ou matériels</div>
+          <p class="obj-desc">Convaincre 5 entreprises ou ONG locales de soutenir l'initiative pour financer du matériel et des actions de plus grande envergure.</p>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Progression</span><span>1 / 5</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-inner">
+    <div class="section-tag">Feuille de route</div>
+    <h2>Les grandes<br>étapes.</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot done"></div>
+        <div class="tl-date">Novembre 2024 ✅</div>
+        <div class="tl-title">Lancement de l'initiative</div>
+        <p class="tl-desc">Première action dans le quartier Bastos avec 8 volontaires. Nettoyage de 60m de rigoles et publication des premières photos.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot done"></div>
+        <div class="tl-date">Janvier 2025 ✅</div>
+        <div class="tl-title">Formation de l'équipe de base</div>
+        <p class="tl-desc">Constitution d'une équipe stable de 15 membres avec des rôles définis : coordination, communication, logistique.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot current"></div>
+        <div class="tl-date">En cours 🔴</div>
+        <div class="tl-title">Expansion à 12 quartiers</div>
+        <p class="tl-desc">Diversifier les zones d'intervention et recruter des volontaires locaux dans chaque quartier pour des actions décentralisées.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Juin 2025</div>
+        <div class="tl-title">Avant la saison des pluies</div>
+        <p class="tl-desc">Grande opération préventive : dégager un maximum de rigoles avant les pluies de juillet-août pour protéger les quartiers vulnérables.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Décembre 2025</div>
+        <div class="tl-title">Bilan annuel — 50 quartiers</div>
+        <p class="tl-desc">Atteindre l'objectif de 50 quartiers couverts, 100 volontaires et 1km de rigoles dégagées. Publication d'un rapport d'impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Verte <span>Patrie</span></div>
+  <div class="footer-flag"><div class="flag-g"></div><div class="flag-r"></div><div class="flag-y"></div></div>
+  <p>Initiative citoyenne bénévole · Yaoundé, Cameroun</p>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="actions.html">Actions</a>
+    <a href="membres.html">Membres</a>
+    <a href="objectifs.html">Objectifs</a>
+    <a href="dons.html">Dons</a>
+  </div>
+  <p style="margin-top:1rem;">© 2026 Verte Patrie — Fait avec fierté 🇨🇲</p>
+</footer>
+
+</body>
+</html>
