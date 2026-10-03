@@ -188,7 +188,8 @@ footer {
     nav ul { display: none; }
       .hamburger { display: flex; }
         .stat { padding: 1.2rem 1rem; }
-        }
+          nav { padding: 0.8rem 1rem; }
+}
 
         .hamburger {
           display: none;
@@ -235,3 +236,16 @@ footer {
                                                                     }
                                                                     .nav-mobile a:last-child { border-bottom: none; }
                                                                     .nav-mobile a:hover, .nav-mobile a.active { color: var(--jaune);}
+                                                                    .nav-mobile {
+                                                                        display: none;
+                                                                          position: fixed;
+                                                                            top: 0; left: 0;
+                                                                              width: 75%; height: 100vh;
+                                                                                background: rgba(11,11,11,0.98);
+                                                                                  backdrop-filter: blur(12px);
+                                                                                    z-index: 999;
+                                                                                      padding: 5rem 2rem 2rem;
+                                                                                        flex-direction: column;
+                                                                                          border-right: 2px solid var(--jaune);
+                                                                                          }
+                                                                                          .nav-mobile.open { display: flex; }
