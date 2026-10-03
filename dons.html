@@ -135,24 +135,33 @@
   </style>
 </head>
 <body>
-
 <nav>
-  <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="actions.html">Actions</a></li>
-    <li><a href="membres.html">Membres</a></li>
-    <li><a href="objectifs.html">Objectifs</a></li>
-    <li><a href="dons.html" class="active">Dons</a></li>
-  </ul>
-</nav>
+    <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
+      <ul>
+          <li><a href="index.html" class="active">Accueil</a></li>
+              <li><a href="actions.html">Actions</a></li>
+                  <li><a href="membres.html">Membres</a></li>
+                      <li><a href="objectifs.html">Objectifs</a></li>
+                          <li><a href="dons.html">Dons</a></li>
+                            </ul>
+                              <button class="hamburger" id="ham">
+                                  <span></span><span></span><span></span>
+                                    </button>
+                                    </nav>
+                                    <div class="nav-mobile" id="navMobile">
+                                      <a href="index.html" class="active">Accueil</a>
+                                        <a href="actions.html">Actions</a>
+                                          <a href="membres.html">Membres</a>
+                                            <a href="objectifs.html">Objectifs</a>
+                                              <a href="dons.html">Dons</a>
+                                              </div>
 
 <!-- HERO -->
 <div class="don-hero">
   <div class="page-hero-tag">Soutenez l'initiative</div>
   <h1>Faire un <span>Don</span></h1>
-  <p>Votre contribution finance le matériel et permet à Verte Patrie d'agir plus fort, plus loin.</p>
-</div>
+  <p>Votre contribution finance le matériel et permet à la communauté TANKO de mieux impacté </p>
+ </div>
 
 <!-- MÉTHODES DE DON -->
 <section id="methodes">
@@ -328,6 +337,13 @@
   </div>
   <p style="margin-top:1rem;">© 2026 Verte Patrie — Fait avec fierté 🇨🇲</p>
 </footer>
-
+<script>
+  const ham = document.getElementById('ham');
+    const nav = document.getElementById('navMobile');
+      ham.addEventListener('click', () => {
+          ham.classList.toggle('open');
+              nav.classList.toggle('open');
+                });
+                </script>
 </body>
 </html>

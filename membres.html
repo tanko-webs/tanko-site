@@ -76,15 +76,25 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="actions.html">Actions</a></li>
-    <li><a href="membres.html" class="active">Membres</a></li>
-    <li><a href="objectifs.html">Objectifs</a></li>
-    <li><a href="dons.html">Dons</a></li>
-  </ul>
-</nav>
+    <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
+      <ul>
+          <li><a href="index.html" class="active">Accueil</a></li>
+              <li><a href="actions.html">Actions</a></li>
+                  <li><a href="membres.html">Membres</a></li>
+                      <li><a href="objectifs.html">Objectifs</a></li>
+                          <li><a href="dons.html">Dons</a></li>
+                            </ul>
+                              <button class="hamburger" id="ham">
+                                  <span></span><span></span><span></span>
+                                    </button>
+                                    </nav>
+                                    <div class="nav-mobile" id="navMobile">
+                                      <a href="index.html" class="active">Accueil</a>
+                                        <a href="actions.html">Actions</a>
+                                          <a href="membres.html">Membres</a>
+                                            <a href="objectifs.html">Objectifs</a>
+                                              <a href="dons.html">Dons</a>
+                                              </div>
 
 <div class="page-hero">
   <div class="page-hero-tag">L'équipe derrière chaque action</div>
@@ -167,7 +177,7 @@
 </section>
 
 <footer>
-  <div class="footer-logo">Verte <span>Patrie</span></div>
+  <div class="footer-logo">communauté<span>tanko</span></div>
   <div class="footer-flag"><div class="flag-g"></div><div class="flag-r"></div><div class="flag-y"></div></div>
   <p>Initiative citoyenne bénévole · Yaoundé, Cameroun</p>
   <div class="footer-links">
@@ -179,6 +189,13 @@
   </div>
   <p style="margin-top:1rem;">© 2026 Verte Patrie — Fait avec fierté 🇨🇲</p>
 </footer>
-
+<script>
+  const ham = document.getElementById('ham');
+    const nav = document.getElementById('navMobile');
+      ham.addEventListener('click', () => {
+          ham.classList.toggle('open');
+              nav.classList.toggle('open');
+                });
+                </script>
 </body>
 </html>

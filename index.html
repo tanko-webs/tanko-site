@@ -220,17 +220,26 @@
   </style>
 </head>
 <body>
-
 <nav>
-  <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
-  <ul>
-    <li><a href="index.html" class="active">Accueil</a></li>
-    <li><a href="actions.html">Actions</a></li>
-    <li><a href="membres.html">Membres</a></li>
-    <li><a href="objectifs.html">Objectifs</a></li>
-    <li><a href="dons.html">Dons</a></li>
-  </ul>
-</nav>
+    <a href="index.html" class="nav-logo">Verte <span>Patrie</span></a>
+      <ul>
+          <li><a href="index.html" class="active">Accueil</a></li>
+              <li><a href="actions.html">Actions</a></li>
+                  <li><a href="membres.html">Membres</a></li>
+                      <li><a href="objectifs.html">Objectifs</a></li>
+                          <li><a href="dons.html">Dons</a></li>
+                            </ul>
+                              <button class="hamburger" id="ham">
+                                  <span></span><span></span><span></span>
+                                    </button>
+                                    </nav>
+                                    <div class="nav-mobile" id="navMobile">
+                                      <a href="index.html" class="active">Accueil</a>
+                                        <a href="actions.html">Actions</a>
+                                          <a href="membres.html">Membres</a>
+                                            <a href="objectifs.html">Objectifs</a>
+                                              <a href="dons.html">Dons</a>
+                                              </div>
 
 <!-- HERO -->
 <header class="hero">
@@ -434,6 +443,13 @@
       btn.classList.add('active');
     });
   });
+</script>
+<script>
+    const ham = document.getElementById('ham');
+    const nav = document.getElementById('navMobile');
+   ham.addEventListener('click', () => {
+   ham.classList.toggle('open');
+  nav.classList.toggle('open');});
 </script>
 
 </body>
