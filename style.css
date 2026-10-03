@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap');@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap');@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -186,4 +187,10 @@ footer {
 @media (max-width: 768px) {
   nav ul { display: none; }
   .stat { padding: 1.2rem 1rem; }
+}
+@media (max-width: 768px) {
+    nav ul { display: none; }
+      .hamburger { display: flex; }
+        .stat { padding: 1.2rem 1rem; }
+        }
 }
